@@ -3,244 +3,434 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>СБУ — uKRAINE GTA</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>СБУ — UKRAINE GTA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Загальний стиль */
+    :root {
+      --main-blue: #002f6c;
+      --accent-blue: #004080;
+      --gold: #ffcc00;
+      --dark-blue: #001a3a;
+    }
+    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
+    
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f0f2f5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f0f2f5 0%, #dfe6ed 100%);
       color: #333;
       line-height: 1.6;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      animation: fadeIn 1.5s ease-in-out;
     }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* Шапка */
+    
+    /* Шапка з гербом */
     header {
-      background-color: #004080;
+      background: linear-gradient(to right, var(--dark-blue), var(--main-blue));
       color: white;
-      padding: 25px 0;
+      padding: 40px 0 30px;
       text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
       position: relative;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      opacity: 0;
-      animation: fadeIn 2s forwards;
-      animation-delay: 0.5s;
+      overflow: hidden;
+      animation: fadeIn 1s ease-out;
     }
-
-    header h1 {
-      font-size: 2.2em;
-      font-weight: bold;
-      margin-top: 10px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gold);
     }
-
-    /* Навігація */
-    nav {
-      display: flex;
-      justify-content: center;
-      background-color: #002f6c;
-      padding: 12px;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-      opacity: 0;
-      animation: fadeIn 2s forwards;
-      animation-delay: 1s;
-    }
-
-    nav a {
-      color: white;
-      font-weight: bold;
-      font-size: 1em;
-      padding: 10px 20px;
-      margin: 0 5px;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-    }
-
-    nav a:hover {
-      background-color: #ffcc00;
-      color: #002f6c;
-    }
-
-    nav a {
-      animation: fadeInUp 1s ease-in-out forwards;
-      opacity: 0;
-      animation-delay: 2s;
-    }
-
-    nav a:nth-child(1) {
-      animation-delay: 2s;
-    }
-
-    nav a:nth-child(2) {
-      animation-delay: 2.2s;
-    }
-
-    nav a:nth-child(3) {
-      animation-delay: 2.4s;
-    }
-
-    nav a:nth-child(4) {
-      animation-delay: 2.6s;
-    }
-
-    /* Основний контент */
-    main {
-      background-color: white;
-      margin: 20px auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      padding: 30px;
-      flex: 1;
-      max-width: 1200px;
-      width: 95%;
-      opacity: 0;
-      animation: fadeIn 2s forwards;
-      animation-delay: 2.8s;
-    }
-
-    main h2 {
-      font-size: 1.8em;
-      color: #004080;
-      margin-bottom: 20px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid #ffcc00;
-    }
-
-    main p {
-      font-size: 1.05em;
-      color: #444;
-      line-height: 1.7;
+    
+    .logo-container {
+      position: relative;
       margin-bottom: 15px;
     }
-
-    /* Секція основних функцій */
-    section ul {
-      font-size: 1.05em;
-      list-style: none;
-      padding-left: 0;
+    
+    .sbu-logo {
+      height: 80px;
+      animation: pulse 3s infinite;
+      filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.4));
     }
-
-    section ul li {
-      margin-bottom: 12px;
-      padding-left: 25px;
+    
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      margin-bottom: 5px;
+    }
+    
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+    
+    /* Навігація */
+    nav {
+      background: var(--accent-blue);
+      padding: 15px 0;
+      text-align: center;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 8px 15px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
       position: relative;
-      opacity: 0;
-      animation: fadeInUp 1s ease-in-out forwards;
     }
-
-    section ul li::before {
-      content: '•';
-      color: #ffcc00;
-      font-size: 1.5em;
+    
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    nav a::after {
+      content: '';
       position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
       left: 0;
-      top: -3px;
+      background: var(--gold);
+      transition: width 0.3s;
     }
-
-    section ul li:nth-child(1) {
-      animation-delay: 3s;
+    
+    nav a:hover::after {
+      width: 100%;
     }
-
-    section ul li:nth-child(2) {
-      animation-delay: 3.2s;
+    
+    /* Основний контент */
+    main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      animation: fadeInUp 1s ease-out;
     }
-
-    section ul li:nth-child(3) {
-      animation-delay: 3.4s;
+    
+    .hero-section {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 40px;
+      align-items: center;
     }
-
-    section ul li:nth-child(4) {
-      animation-delay: 3.6s;
+    
+    .hero-text {
+      flex: 1;
     }
-
+    
+    .hero-image {
+      flex: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      color: var(--dark-blue);
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-top: 4px solid var(--gold);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
+    
+    .feature-title {
+      font-size: 1.3rem;
+      color: var(--dark-blue);
+      margin-bottom: 10px;
+    }
+    
     /* Блок рекрутингу */
     .recruitment {
-      background-color: #004080;
+      background: linear-gradient(135deg, var(--main-blue) 0%, var(--dark-blue) 100%);
       color: white;
-      padding: 30px;
-      margin: 20px auto;
+      padding: 50px 30px;
+      margin: 40px auto;
       border-radius: 8px;
       text-align: center;
       max-width: 1200px;
       width: 95%;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      opacity: 0;
-      animation: fadeIn 2s forwards;
-      animation-delay: 3.8s;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
     }
-
+    
+    .recruitment::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,204,0,0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+    
     .recruitment h2 {
-      color: #ffcc00;
+      color: var(--gold);
       margin-bottom: 20px;
-      font-size: 1.8em;
+      font-size: 2rem;
+      position: relative;
     }
-
+    
     .recruitment p {
-      margin-bottom: 20px;
-      font-size: 1.1em;
+      margin-bottom: 25px;
+      font-size: 1.1rem;
       color: #eee;
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
+      position: relative;
     }
-
+    
     .recruitment-btn {
       display: inline-block;
-      background-color: #ffcc00;
-      color: #002f6c;
-      padding: 12px 30px;
+      background: var(--gold);
+      color: var(--dark-blue);
+      padding: 15px 35px;
       border-radius: 5px;
-      font-weight: bold;
+      font-weight: 700;
       transition: all 0.3s ease;
-      font-size: 1.05em;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      font-size: 1.1rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       border: none;
       cursor: pointer;
+      position: relative;
+      overflow: hidden;
     }
-
+    
+    .recruitment-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: rotate(30deg);
+      transition: all 0.3s;
+    }
+    
     .recruitment-btn:hover {
-      background-color: #e6b800;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+      background: #e6b800;
+      transform: translateY(-3px);
+      box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
     }
-
+    
+    .recruitment-btn:hover::after {
+      left: 100%;
+    }
+    
     /* Стрічка новин */
     .news-ticker {
-      background-color: #004080;
+      background: var(--dark-blue);
       color: white;
-      padding: 10px 0;
+      padding: 12px 0;
       overflow: hidden;
       white-space: nowrap;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
       width: 100%;
+      position: relative;
     }
-
+    
+    .news-ticker::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100px;
+      background: linear-gradient(to right, var(--dark-blue), transparent);
+      z-index: 2;
+    }
+    
+    .news-ticker::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 100px;
+      background: linear-gradient(to left, var(--dark-blue), transparent);
+      z-index: 2;
+    }
+    
     .ticker-content {
       display: inline-block;
       padding-left: 100%;
-      animation: ticker 20s linear infinite;
+      animation: ticker 25s linear infinite;
     }
-
+    
     .ticker-content span {
-      margin-right: 40px;
-      font-weight: bold;
+      margin-right: 50px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      position: relative;
+      padding-left: 25px;
     }
-
+    
+    .ticker-content span::before {
+      content: '⚡';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+    
+    /* Футер */
+    footer {
+      background: var(--dark-blue);
+      color: white;
+      padding: 30px 0;
+      margin-top: 60px;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 0 20px;
+    }
+    
+    .footer-logo {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .footer-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+    
+    .copyright {
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    /* Анімації */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    
     @keyframes ticker {
       0% {
         transform: translateX(0);
@@ -249,120 +439,173 @@
         transform: translateX(-100%);
       }
     }
-
-    /* Футер */
-    footer {
-      background-color: #002f6c;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.95em;
-      width: 100%;
-      margin-top: auto;
-    }
-
-    /* Анімації */
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
+    
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
       }
-      100% {
-        opacity: 1;
+      to {
+        transform: rotate(360deg);
       }
     }
-
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
+    
+    /* Адаптивність */
+    @media (max-width: 992px) {
+      .hero-section {
+        flex-direction: column;
       }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
+      
+      .hero-text {
+        order: 2;
+      }
+      
+      .hero-image {
+        order: 1;
+        max-width: 500px;
       }
     }
-
-    /* Мобільна версія */
+    
     @media (max-width: 768px) {
       header h1 {
-        font-size: 1.8em;
+        font-size: 2rem;
       }
-
-      nav {
-        flex-wrap: wrap;
-      }
-
+      
       nav a {
-        font-size: 0.9em;
-        padding: 8px 12px;
-        margin: 3px;
+        margin: 0 10px;
+        font-size: 1rem;
+        padding: 6px 12px;
       }
-
-      main, .recruitment {
-        padding: 20px;
+      
+      .section-title {
+        font-size: 1.7rem;
       }
-
-      main h2, .recruitment h2 {
-        font-size: 1.6em;
+      
+      .recruitment h2 {
+        font-size: 1.7rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .footer-links {
+        margin-top: 15px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Шапка -->
+  <!-- Шапка з гербом -->
   <header>
-    <h1>СБУ — UKRAINE GTA | СХІДНА УКРАЇНА</h1>
+    <div class="logo-container">
+      <img src="https://i.imgur.com/XYZ1234.png" alt="Герб СБУ" class="sbu-logo">
+    </div>
+    <h1>СЛУЖБА БЕЗПЕКИ УКРАЇНИ</h1>
+    <p>UKRAINE GTA | СХІДНА УКРАЇНА</p>
   </header>
 
   <!-- Навігація -->
   <nav>
-    <a href="nakazy.html">Накази</a>
-    <a href="struktura.html">Структура</a>
-    <a href="kontakt.html">Контакти</a>
-    <a href="istorya.html">Історія СБУ</a>
-    <a href="kerivnytstvo.html">Керівництво</a>
-    <a href="about.html">Про нас</a>
-    <a href="operatives.html">Галерея оперативників</a>
+    <a href="index.html"><i class="fas fa-home"></i> Головна</a>
+    <a href="nakazy.html"><i class="fas fa-file-alt"></i> Накази</a>
+    <a href="struktura.html"><i class="fas fa-sitemap"></i> Структура</a>
+    <a href="operatives.html"><i class="fas fa-users"></i> Оперативники</a>
+    <a href="kerivnytstvo.html"><i class="fas fa-user-tie"></i> Керівництво</a>
+    <a href="istorya.html"><i class="fas fa-history"></i> Історія</a>
+    <a href="kontakt.html"><i class="fas fa-phone-alt"></i> Контакти</a>
   </nav>
 
   <!-- Основний контент -->
   <main>
-    <section>
-      <h2>Ласкаво просимо до СБУ!</h2>
-      <p>Служба Безпеки України займається забезпеченням безпеки, правопорядку та боротьбою з криміналом.</p>
-      <p>На цьому сайті ви знайдете актуальну інформацію про діяльність нашої організації, а також накази, структуру та багато іншого.</p>
+    <section class="hero-section">
+      <div class="hero-text">
+        <h2 class="section-title">Ласкаво просимо до СБУ</h2>
+        <p>Служба Безпеки України - елітний підрозділ, який забезпечує безпеку, правопорядок та боротьбу з організованою злочинністю в грі GTA: Ukraine.</p>
+        <p>Наші оперативники - це професіонали з високим рівнем підготовки, які денно та ночно стережуть спокій громадян.</p>
+      </div>
+      <div class="hero-image">
+        <img src="https://i.imgur.com/ABC1234.jpg" alt="Оперативники СБУ">
+      </div>
     </section>
 
     <section>
-      <h2>Основні функції СБУ:</h2>
-      <ul>
-        <li>Забезпечення безпеки гравців і мирних жителів в грі;</li>
-        <li>Пошук та нейтралізація терористичних і злочинних угруповань;</li>
-        <li>Підтримка порядку на вулицях і в громадських місцях;</li>
-        <li>Розслідування випадків шахрайства і корупції.</li>
-      </ul>
+      <h2 class="section-title">Наші функції</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3 class="feature-title">Захист громадян</h3>
+          <p>Забезпечення безпеки мирних жителів та гравців від злочинних угруповань</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-gavel"></i>
+          </div>
+          <h3 class="feature-title">Правопорядок</h3>
+          <p>Підтримання законності та порядку на вулицях міст</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-user-secret"></i>
+          </div>
+          <h3 class="feature-title">Контррозвідка</h3>
+          <p>Виявлення та нейтралізація терористичних угруповань</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-balance-scale"></i>
+          </div>
+          <h3 class="feature-title">Розслідування</h3>
+          <p>Розкриття складних злочинів та корупційних схем</p>
+        </div>
+      </div>
     </section>
   </main>
 
   <!-- Блок рекрутингу -->
   <div class="recruitment">
-    <h2>ДОЛУЧАЙСЯ ДО СБУ</h2>
-    <p>Приєднуйся до одного з кращих спецпідрозділів! Ми розширюємося та оголошуємо набір за різними спеціалізаціями.</p>
-    <a href="https://docs.google.com/forms/d/1gT_vP0gil252kp_ZQtqmm_QagHAFmLQves_TVFq1-pk/edit" class="recruitment-btn">ПОДАТИ ЗАЯВКУ</a>
+    <h2>СТАНОВИСЬ ЧАСТИНОЮ КОМАНДИ</h2>
+    <p>СБУ проводить набір нових оперативників. Пройди відбір та отримай шанс служити в елітному підрозділі!</p>
+    <a href="https://docs.google.com/forms/d/1gT_vP0gil252kp_ZQtqmm_QagHAFmLQves_TVFq1-pk/edit" class="recruitment-btn">
+      <i class="fas fa-user-plus"></i> ПОДАТИ ЗАЯВКУ
+    </a>
   </div>
 
   <!-- Стрічка новин -->
   <div class="news-ticker">
     <div class="ticker-content">
-      <span>⚡ 21.04.2025 | Створено тренувальний табір на території села Калинівка</span>
-      <span>⚡ 22.04.2025 | Голова СБ України Кирило Громов випустив наказ про реформу НАСБ</span>
+      <span>21.04.2025 | Створено тренувальний табір на території села Калинівка</span>
+      <span>22.04.2025 | Голова СБ України Кирило Громов випустив наказ про реформу НАСБ</span>
+      <span>23.04.2025 | Успішно завершено операцію "Чисте небо" проти контрабандистів</span>
+      <span>24.04.2025 | Заплановано масштабні навчання спецпідрозділів</span>
     </div>
   </div>
 
   <!-- Футер -->
   <footer>
-    &copy; 2025 СБУ — UKRAINE GTA. Всі права захищені.
+    <div class="footer-content">
+      <div class="footer-logo">СБУ UKRAINE GTA</div>
+      <div class="footer-links">
+        <a href="#"><i class="fab fa-telegram"></i></a>
+        <a href="#"><i class="fab fa-discord"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+      <div class="copyright">
+        &copy; 2025 Служба Безпеки України. Всі права захищені.
+      </div>
+    </div>
   </footer>
 
 </body>

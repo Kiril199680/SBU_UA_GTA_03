@@ -4,15 +4,67 @@
   <meta charset="UTF-8">
   <title>Контакти</title>
   <style>
-    body { font-family: Arial; margin: 0; background: #f4f4f4; }
-    header { background: #002f6c; color: white; padding: 20px; text-align: center; }
-    nav { background: #004080; padding: 10px; text-align: center; }
-    nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
-    main { padding: 20px; }
-    footer { background: #002f6c; color: white; text-align: center; padding: 10px; position: fixed; bottom: 0; width: 100%; }
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
-    th { background: #004080; color: white; }
+    body {
+      font-family: Arial;
+      margin: 0;
+      background: #f4f4f4;
+    }
+    header {
+      background: #002f6c;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: #004080;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    main {
+      padding: 20px;
+      animation: fadeIn 1s ease-out;
+    }
+    footer {
+      background: #002f6c;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #004080;
+      color: white;
+    }
+
+    /* Анімація появи контенту */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 <body>
@@ -29,13 +81,10 @@
     <section>
       <h2>Як зв'язатися:</h2>
       <p>Telegram: <a href="https://t.me/menegerSBU_UA_GTA_03" target="_blank">https://t.me/menegerSBU_UA_GTA_03</a></p>
-      </section>
+    </section>
   </main>
-
-  <!-- Футер -->
   <footer>
     &copy; 2025 СБУ — UKRAINE GTA. Всі права захищені.
   </footer>
-
 </body>
 </html>

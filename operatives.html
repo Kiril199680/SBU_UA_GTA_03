@@ -2,92 +2,290 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Наші оперативники | СБУ UKRAINE GTA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Елітний склад | СБУ UKRAINE GTA</title>
   <style>
-    /* Основний стиль як у головній сторінці */
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f0f2f5;
-      color: #333;
+    /* Глобальні стилі */
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
     }
-    /* ... (додай тут стилі з головної сторінки) ... */
-
-    /* Стилі для галереї */
+    
+    body {
+      background-color: #0a0a1a;
+      color: white;
+      line-height: 1.6;
+    }
+    
+    /* Шапка */
+    header {
+      background: linear-gradient(90deg, #002f6c 0%, #004080 100%);
+      padding: 2rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,204,0,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z"/></svg>');
+      background-size: cover;
+      animation: pulse 15s infinite linear;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 0.5; }
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      position: relative;
+      animation: fadeInDown 1.5s ease-out;
+    }
+    
+    .subtitle {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      opacity: 0;
+      animation: fadeIn 2s ease-out 0.5s forwards;
+      color: #ffcc00;
+    }
+    
+    /* Навігація */
+    nav {
+      background-color: rgba(0, 47, 108, 0.9);
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #ffcc00;
+      transition: width 0.3s;
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    /* Галерея */
+    .gallery-container {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+    
     .gallery-title {
       text-align: center;
-      color: #004080;
-      margin: 30px 0;
-      font-size: 2.2em;
+      margin-bottom: 3rem;
+      font-size: 2rem;
+      color: #ffcc00;
+      position: relative;
     }
+    
+    .gallery-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 3px;
+      background: #ffcc00;
+      margin: 1rem auto;
+    }
+    
     .operatives-gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
     }
+    
     .operative-card {
-      width: 280px;
-      background: white;
+      background: rgba(0, 47, 108, 0.7);
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.5s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: cardAppear 0.8s ease-out forwards;
     }
+    
+    @keyframes cardAppear {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Затримки для анімації карток */
+    .operative-card:nth-child(1) { animation-delay: 0.3s; }
+    .operative-card:nth-child(2) { animation-delay: 0.6s; }
+    .operative-card:nth-child(3) { animation-delay: 0.9s; }
+    .operative-card:nth-child(4) { animation-delay: 1.2s; }
+    
     .operative-card:hover {
       transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
     }
-    .operative-card img {
+    
+    .operative-img {
       width: 100%;
-      height: 200px;
+      height: 250px;
       object-fit: cover;
+      transition: transform 0.5s;
     }
+    
+    .operative-card:hover .operative-img {
+      transform: scale(1.05);
+    }
+    
     .operative-info {
-      padding: 15px;
+      padding: 1.5rem;
       text-align: center;
     }
+    
     .operative-info h3 {
-      color: #002f6c;
-      margin-bottom: 5px;
+      color: #ffcc00;
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
     }
+    
     .operative-info p {
-      color: #666;
-      font-size: 0.9em;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+    
+    .operative-rank {
+      display: inline-block;
+      background: rgba(255, 204, 0, 0.2);
+      color: #ffcc00;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+    }
+    
+    /* Футер */
+    footer {
+      background: #002f6c;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+    
+    /* Анімації */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Шапка і навігація (як у головній сторінці) -->
+  <!-- Шапка -->
   <header>
-    <h1>Наші оперативники</h1>
+    <h1>Елітний склад СБУ</h1>
+    <p class="subtitle">Кращі оперативники UKRAINE GTA</p>
   </header>
+
+  <!-- Навігація -->
   <nav>
     <a href="index.html">Головна</a>
-    <a href="operatives.html">Оперативники</a>
-    <!-- Інші посилання -->
+    <a href="operatives.html">Наші бійці</a>
+    <a href="nakazy.html">Накази</a>
+    <a href="kontakt.html">Контакти</a>
   </nav>
 
   <!-- Галерея -->
-  <h2 class="gallery-title">ЕЛІТНІ БІЙЦІ ЦСО "А"</h2>
-  <div class="operatives-gallery">
-    <div class="operative-card">
-      <img src="img/operative1.jpg" alt="Оперативник">
-      <div class="operative-info">
-        <h3>Майор Коваль</h3>
-        <p>Кіберпідрозділ</p>
+  <div class="gallery-container">
+    <h2 class="gallery-title">НАШІ ОПЕРАТИВНИКИ</h2>
+    
+    <div class="operatives-gallery">
+      <!-- Картка 1 -->
+      <div class="operative-card">
+        <img src="img/operative1.jpg" alt="Оперативник" class="operative-img">
+        <div class="operative-info">
+          <h3>Майор Коваль</h3>
+          <p>Кіберпідрозділ</p>
+          <span class="operative-rank">Старший офіцер</span>
+        </div>
+      </div>
+      
+      <!-- Картка 2 -->
+      <div class="operative-card">
+        <img src="img/operative2.jpg" alt="Оперативник" class="operative-img">
+        <div class="operative-info">
+          <h3>Капітан Марченко</h3>
+          <p>Група альфа</p>
+          <span class="operative-rank">Снайпер</span>
+        </div>
+      </div>
+      
+      <!-- Картка 3 -->
+      <div class="operative-card">
+        <img src="img/operative3.jpg" alt="Оперативник" class="operative-img">
+        <div class="operative-info">
+          <h3>Лейтенант Шевченко</h3>
+          <p>Розвідка</p>
+          <span class="operative-rank">Аналітик</span>
+        </div>
+      </div>
+      
+      <!-- Картка 4 -->
+      <div class="operative-card">
+        <img src="img/operative4.jpg" alt="Оперативник" class="operative-img">
+        <div class="operative-info">
+          <h3>Сержант Бондар</h3>
+          <p>Штурмова група</p>
+          <span class="operative-rank">Тактик</span>
+        </div>
       </div>
     </div>
-    <!-- Додай інші картки -->
   </div>
 
   <!-- Футер -->
   <footer>
-    &copy; 2025 СБУ — UKRAINE GTA
+    <p>&copy; 2025 СБУ UKRAINE GTA. Всі права захищені.</p>
   </footer>
 
 </body>

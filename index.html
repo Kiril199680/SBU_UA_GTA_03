@@ -33,7 +33,7 @@
     header {
       background: linear-gradient(to right, var(--dark-blue), var(--main-blue));
       color: white;
-      padding: 40px 0 30px;
+      padding: 20px 0 15px; /* Зменшені відступи */
       text-align: center;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
       position: relative;
@@ -47,23 +47,23 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 3px;
+      height: 4px;
       background: var(--gold);
     }
     
     .logo-container {
       position: relative;
-      margin-bottom: 15px;
+      margin-bottom: 10px; /* Зменшений відступ */
     }
     
     .sbu-logo {
-      height: 180px;
+      height: 200px; /* Збільшений розмір герба */
       animation: pulse 3s infinite;
-      filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.4));
+      filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.6));
     }
     
     header h1 {
-      font-size: 2.5rem;
+      font-size: 2rem; /* Зменшений розмір тексту */
       font-weight: 700;
       letter-spacing: 1px;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -71,7 +71,7 @@
     }
     
     header p {
-      font-size: 1.1rem;
+      font-size: 1rem; /* Зменшений розмір тексту */
       opacity: 0.9;
       font-weight: 300;
     }
@@ -79,7 +79,7 @@
     /* Навігація */
     nav {
       background: var(--accent-blue);
-      padding: 15px 0;
+      padding: 12px 0; /* Зменшений відступ */
       text-align: center;
       box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
       position: sticky;
@@ -90,10 +90,10 @@
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 15px;
+      margin: 0 12px; /* Зменшений відступ */
       font-weight: 600;
-      font-size: 1.1rem;
-      padding: 8px 15px;
+      font-size: 1rem; /* Зменшений розмір тексту */
+      padding: 6px 12px; /* Зменшений відступ */
       border-radius: 4px;
       transition: all 0.3s ease;
       position: relative;
@@ -121,15 +121,15 @@
     /* Основний контент */
     main {
       max-width: 1200px;
-      margin: 40px auto;
+      margin: 30px auto; /* Зменшений відступ */
       padding: 0 20px;
       animation: fadeInUp 1s ease-out;
     }
     
     .hero-section {
       display: flex;
-      gap: 30px;
-      margin-bottom: 40px;
+      gap: 25px; /* Зменшений відступ */
+      margin-bottom: 30px; /* Зменшений відступ */
       align-items: center;
     }
     
@@ -152,11 +152,11 @@
     }
     
     .section-title {
-      font-size: 2rem;
+      font-size: 1.8rem; /* Зменшений розмір тексту */
       color: var(--dark-blue);
-      margin-bottom: 25px;
+      margin-bottom: 20px; /* Зменшений відступ */
       position: relative;
-      padding-bottom: 10px;
+      padding-bottom: 8px; /* Зменшений відступ */
     }
     
     .section-title::after {
@@ -164,11 +164,12 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 60px;
+      width: 50px; /* Зменшений розмір */
       height: 3px;
       background: var(--gold);
     }
     
+    /* Інші стилі залишаються без змін */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -467,17 +468,21 @@
     
     @media (max-width: 768px) {
       header h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+      }
+      
+      .sbu-logo {
+        height: 150px; /* Зменшений розмір герба для мобільних */
       }
       
       nav a {
-        margin: 0 10px;
-        font-size: 1rem;
-        padding: 6px 12px;
+        margin: 0 8px;
+        font-size: 0.9rem;
+        padding: 5px 10px;
       }
       
       .section-title {
-        font-size: 1.7rem;
+        font-size: 1.6rem;
       }
       
       .recruitment h2 {
@@ -497,6 +502,10 @@
       
       .footer-links {
         margin-top: 15px;
+      }
+      
+      .sbu-logo {
+        height: 120px; /* Ще менший розмір для маленьких екранів */
       }
     }
   </style>

@@ -3,37 +3,280 @@
 <head>
   <meta charset="UTF-8">
   <title>Накази Голови СБУ</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body { font-family: Arial; margin: 0; background: #f4f4f4; }
-    header { background: #002f6c; color: white; padding: 20px; text-align: center; }
-    nav { background: #004080; padding: 10px; text-align: center; }
-    nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
-    main {
-      padding: 20px;
-      animation: fadeIn 1s ease-out;
+    :root {
+      --main-blue: #002f6c;
+      --accent-blue: #004080;
+      --gold: #ffcc00;
+      --dark-blue: #001a3a;
     }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #f0f2f5 0%, #dfe6ed 100%);
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    header {
+      background: linear-gradient(to right, var(--dark-blue), var(--main-blue));
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gold);
+    }
+    
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    header p {
+      margin-top: 10px;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+    
+    nav {
+      background: var(--accent-blue);
+      padding: 15px 0;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 8px 15px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    nav a.active {
+      background: var(--gold);
+      color: var(--dark-blue);
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      animation: fadeIn 0.8s ease-out;
+    }
+    
+    .orders-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .order-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 4px solid var(--gold);
+    }
+    
+    .order-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    }
+    
+    .order-header {
+      background: var(--main-blue);
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .order-number {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--gold);
+    }
+    
+    .order-date {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .order-content {
+      padding: 20px;
+    }
+    
+    .order-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: var(--dark-blue);
+    }
+    
+    .order-desc {
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    
+    .order-status {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 15px;
+    }
+    
+    .status-active {
+      background: #e3f7e8;
+      color: #2e7d32;
+    }
+    
+    .status-archive {
+      background: #f5f5f5;
+      color: #616161;
+    }
+    
+    .search-bar {
+      display: flex;
+      margin-bottom: 30px;
+      max-width: 600px;
+    }
+    
+    .search-bar input {
+      flex: 1;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px 0 0 4px;
+      font-size: 1rem;
+      outline: none;
+      transition: border 0.3s;
+    }
+    
+    .search-bar input:focus {
+      border-color: var(--main-blue);
+    }
+    
+    .search-bar button {
+      background: var(--main-blue);
+      color: white;
+      border: none;
+      padding: 0 20px;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .search-bar button:hover {
+      background: var(--dark-blue);
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+      color: var(--dark-blue);
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+    }
+    
     footer {
-      background: #002f6c;
+      background: var(--dark-blue);
       color: white;
       text-align: center;
-      padding: 10px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
+      padding: 25px 0;
+      margin-top: 60px;
     }
-    table {
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .footer-logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--gold);
+    }
+    
+    .footer-links a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+    
+    .copyright {
       width: 100%;
-      border-collapse: collapse;
       margin-top: 20px;
+      font-size: 0.9rem;
+      opacity: 0.8;
     }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
-    }
-    th { background: #004080; color: white; }
-
-    /* Анімація при завантаженні */
+    
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -44,40 +287,222 @@
         transform: translateY(0);
       }
     }
+    
+    /* Анімація карток */
+    .order-card {
+      animation: cardAppear 0.6s ease-out forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    @keyframes cardAppear {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Додаємо затримки для анімації карток */
+    .order-card:nth-child(1) { animation-delay: 0.1s; }
+    .order-card:nth-child(2) { animation-delay: 0.2s; }
+    .order-card:nth-child(3) { animation-delay: 0.3s; }
+    .order-card:nth-child(4) { animation-delay: 0.4s; }
+    .order-card:nth-child(5) { animation-delay: 0.5s; }
+    .order-card:nth-child(6) { animation-delay: 0.6s; }
+    .order-card:nth-child(7) { animation-delay: 0.7s; }
+    .order-card:nth-child(8) { animation-delay: 0.8s; }
+    .order-card:nth-child(9) { animation-delay: 0.9s; }
+    .order-card:nth-child(10) { animation-delay: 1s; }
+    .order-card:nth-child(11) { animation-delay: 1.1s; }
+    
+    /* Адаптивність */
+    @media (max-width: 768px) {
+      .orders-container {
+        grid-template-columns: 1fr;
+      }
+      
+      nav a {
+        margin: 0 10px;
+        font-size: 1rem;
+        padding: 6px 10px;
+      }
+      
+      header h1 {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Накази Голови СБУ</h1>
+    <h1>НАКАЗИ ГОЛОВИ СБУ</h1>
+    <p>Офіційні документи та розпорядження</p>
   </header>
+  
   <nav>
-    <a href="index.html">Головна</a>
-    <a href="struktura.html">Структура</a>
-    <a href="kontakt.html">Контакти</a>
-    <a href="about.html">Про нас</a>
-    <a href="operatives.html">Галереія оперативників</a>
-    <a href="kerivnytstvo.html">Керівництво</a>
+    <a href="index.html"><i class="fas fa-home"></i> Головна</a>
+    <a href="struktura.html"><i class="fas fa-sitemap"></i> Структура</a>
+    <a href="kontakt.html"><i class="fas fa-phone-alt"></i> Контакти</a>
+    <a href="about.html"><i class="fas fa-info-circle"></i> Про нас</a>
+    <a href="operatives.html"><i class="fas fa-users"></i> Оперативники</a>
+    <a class="active" href="nakazy.html"><i class="fas fa-file-alt"></i> Накази</a>
   </nav>
+  
   <main>
-    <section>
-      <h2>Останні накази</h2>
-      <ul>
-        <li>Наказ №001 "Про заборону складання адміністративних протоколів за порушення правил дорожнього руху" від 10.03.2025</li>
-        <li>Наказ №002 "Про звільнення керівного складу підрозділів СБУ м. Київ" від 10.03.2025</li>
-        <li>Наказ №003 "Про переатестацію Майорів та Підполковників СБУ м. Київ" від 10.03.2025</li>
-        <li>Наказ №004 "Про призначення на посади Полковників СБУ м. Київ" від 13.03.2025</li>
-        <li>Наказ №005 "Про призначення на керівні посади" від 13.03.2025</li>
-        <li>Наказ №006 "Про організацію Дня відкритих дверей" від 16.03.2025</li>
-        <li>Наказ №007 "Про тимчасове призупинення діяльності підрозділу ЦСО 'А'" від 25.03.2025</li>
-        <li>Наказ №008 "Про призупинення співпраці між СБУ Дніпра та Генералом НПУ Дніпра" від 31.04.2025</li>
-        <li>Наказ №009 "Про затвердження ієрархічної структури посад у системі СБУ" від 18.04.2025</li>
-        <li>Наказ №010 "Про оголошення вихідних днів 18.04.2025 та 20.04.2025" від 18.04.2025</li>
-        <li>Наказ №011 "Про реформу Національної академії Служби Безпеки України" від 22.04.2025</li>
-      </ul>
-    </section>
+    <h2 class="section-title">Останні накази</h2>
+    
+    <div class="search-bar">
+      <input type="text" placeholder="Пошук наказів...">
+      <button><i class="fas fa-search"></i></button>
+    </div>
+    
+    <div class="orders-container">
+      <div class="order-card">
+        <div class="order-header">
+          <span class="order-number">НАКАЗ №001</span>
+          <span class="order-date">10.03.2025</span>
+        </div>
+        <div class="order-content">
+          <h3 class="order-title">Про заборону складання адміністративних протоколів</h3>
+          <p class="order-desc">Забороняється складання адмінпротоколів за порушення ПДР без належного оформлення...</p>
+          <span class="order-status status-active">Активний</span>
+        </div>
+      </div>
+      
+      <div class="order-card">
+        <div class="order-header">
+          <span class="order-number">НАКАЗ №002</span>
+          <span class="order-date">10.03.2025</span>
+        </div>
+        <div class="order-content">
+          <h3 class="order-title">Про звільнення керівного складу</h3>
+          <p class="order-desc">Звільнення керівного складу підрозділів СБУ м. Київ у зв'язку з реорганізацією...</p>
+          <span class="order-status status-archive">Архів</span>
+        </div>
+      </div>
+      
+      <div class="order-card">
+        <div class="order-header">
+          <span class="order-number">НАКАЗ №003</span>
+          <span class="order-date">10.03.2025</span>
+        </div>
+        <div class="order-content">
+          <h3 class="order-title">Про переатестацію офіцерів</h3>
+          <p class="order-desc">Проведення переатестації Майорів та Підполковників СБУ м. Київ до 15.04.2025...</p>
+          <span class="order-status status-active">Активний</span>
+        </div>
+      </div>
+      
+      <div class="order-card">
+        <div class="order-header">
+          <span class="order-number">НАКАЗ №004</span>
+          <span class="order-date">13.03.2025</span>
+        </div>
+        <div class="order-content">
+          <h3 class="order-title">Про призначення Полковників</h3>
+          <p class="order-desc">Призначення на посади Полковників СБУ м. Київ нових керівників підрозділів...</p>
+          <span class="order-status status-active">Активний</span>
+        </div>
+      </div>
+      
+      <div class="order-card">
+        <div class="order-header">
+          <span class="order-number">НАКАЗ №005</span>
+          <span class="order-date">13.03.2025</span>
+        </div>
+        <div class="order-content">
+          <h3 class="order-title">Про призначення керівників</h3>
+          <p class="order-desc">Призначення на керівні посади у центральному апараті СБУ...</p>
+          <span class="order-status status-active">Активний</span>
+        </div>
+      </div>
+      
+      <div class="order-card">
+        <div class="order-header">
+          <span class="order-number">НАКАЗ №006</span>
+          <span class="order-date">16.03.2025</span>
+        </div>
+        <div class="order-content">
+          <h3 class="order-title">Про День відкритих дверей</h3>
+          <p class="order-desc">Організація Дня відкритих дверей для потенційних рекрутів 25.03.2025...</p>
+          <span class="order-status status-archive">Архів</span>
+        </div>
+      </div>
+      
+      <div class="order-card">
+        <div class="order-header">
+          <span class="order-number">НАКАЗ №007</span>
+          <span class="order-date">25.03.2025</span>
+        </div>
+        <div class="order-content">
+          <h3 class="order-title">Про призупинення діяльності ЦСО 'А'</h3>
+          <p class="order-desc">Тимчасове призупинення діяльності підрозділу ЦСО 'А' для внутрішньої перевірки...</p>
+          <span class="order-status status-active">Активний</span>
+        </div>
+      </div>
+      
+      <div class="order-card">
+        <div class="order-header">
+          <span class="order-number">НАКАЗ №008</span>
+          <span class="order-date">31.04.2025</span>
+        </div>
+        <div class="order-content">
+          <h3 class="order-title">Про призупинення співпраці з НПУ</h3>
+          <p class="order-desc">Призупинення співпраці між СБУ Дніпра та Генералом НПУ Дніпра до подальших розпоряджень...</p>
+          <span class="order-status status-active">Активний</span>
+        </div>
+      </div>
+      
+      <div class="order-card">
+        <div class="order-header">
+          <span class="order-number">НАКАЗ №009</span>
+          <span class="order-date">18.04.2025</span>
+        </div>
+        <div class="order-content">
+          <h3 class="order-title">Про ієрархічну структуру посад</h3>
+          <p class="order-desc">Затвердження нової ієрархічної структури посад у системі СБУ...</p>
+          <span class="order-status status-active">Активний</span>
+        </div>
+      </div>
+      
+      <div class="order-card">
+        <div class="order-header">
+          <span class="order-number">НАКАЗ №010</span>
+          <span class="order-date">18.04.2025</span>
+        </div>
+        <div class="order-content">
+          <h3 class="order-title">Про вихідні дні</h3>
+          <p class="order-desc">Оголошення вихідних днів 18.04.2025 та 20.04.2025 для особового складу...</p>
+          <span class="order-status status-archive">Архів</span>
+        </div>
+      </div>
+      
+      <div class="order-card">
+        <div class="order-header">
+          <span class="order-number">НАКАЗ №011</span>
+          <span class="order-date">22.04.2025</span>
+        </div>
+        <div class="order-content">
+          <h3 class="order-title">Про реформу НАСБУ</h3>
+          <p class="order-desc">Реформування Національної академії Служби Безпеки України згідно з новими стандартами...</p>
+          <span class="order-status status-active">Активний</span>
+        </div>
+      </div>
+    </div>
   </main>
+  
   <footer>
-    &copy; 2025 СБУ — UKRAINE GTA. Всі права захищені.
+    <div class="footer-content">
+      <div class="footer-logo">СБУ UKRAINE GTA</div>
+      <div class="footer-links">
+        <a href="#"><i class="fab fa-telegram"></i></a>
+        <a href="#"><i class="fab fa-discord"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+      <div class="copyright">
+        &copy; 2025 Служба Безпеки України. Всі права захищені.
+      </div>
+    </div>
   </footer>
 </body>
 </html>

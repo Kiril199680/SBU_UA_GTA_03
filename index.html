@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>СБУ — uKRAINE GTA</title>
+  <meta name="description" content="Офіційний сайт СБУ на сервері UKRAINE GTA — структура, накази, набір в підрозділ.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* Загальний стиль */
     * {
       margin: 0;
       padding: 0;
@@ -29,30 +30,17 @@
       color: inherit;
     }
 
- /* Шапка */
-header {
-  background-color: #001833; /* ще темніший синій */
-  color: white;
-  padding: 25px 0;
-  text-align: center;
-  position: relative;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  opacity: 0;
-  animation: fadeIn 2s forwards;
-  animation-delay: 0.5s;
-}
-
-/* Навігація */
-nav {
-  display: flex;
-  justify-content: center;
-  background-color: #3a3a3a; /* сірий */
-  padding: 12px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  opacity: 0;
-  animation: fadeIn 2s forwards;
-  animation-delay: 1s;
-}
+    header {
+      background-color: #001833;
+      color: white;
+      padding: 25px 0;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+      animation-delay: 0.5s;
+    }
 
     header h1 {
       font-size: 2.2em;
@@ -61,7 +49,6 @@ nav {
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
     }
 
-    /* Навігація */
     nav {
       display: flex;
       justify-content: center;
@@ -71,6 +58,7 @@ nav {
       opacity: 0;
       animation: fadeIn 2s forwards;
       animation-delay: 1s;
+      flex-wrap: wrap;
     }
 
     nav a {
@@ -78,9 +66,11 @@ nav {
       font-weight: bold;
       font-size: 1em;
       padding: 10px 20px;
-      margin: 0 5px;
+      margin: 5px;
       border-radius: 4px;
       transition: all 0.3s ease;
+      animation: fadeInUp 1s ease-in-out forwards;
+      opacity: 0;
     }
 
     nav a:hover {
@@ -88,29 +78,13 @@ nav {
       color: #002f6c;
     }
 
-    nav a {
-      animation: fadeInUp 1s ease-in-out forwards;
-      opacity: 0;
-      animation-delay: 2s;
-    }
+    nav a:nth-child(1) { animation-delay: 2s; }
+    nav a:nth-child(2) { animation-delay: 2.2s; }
+    nav a:nth-child(3) { animation-delay: 2.4s; }
+    nav a:nth-child(4) { animation-delay: 2.6s; }
+    nav a:nth-child(5) { animation-delay: 2.8s; }
+    nav a:nth-child(6) { animation-delay: 3s; }
 
-    nav a:nth-child(1) {
-      animation-delay: 2s;
-    }
-
-    nav a:nth-child(2) {
-      animation-delay: 2.2s;
-    }
-
-    nav a:nth-child(3) {
-      animation-delay: 2.4s;
-    }
-
-    nav a:nth-child(4) {
-      animation-delay: 2.6s;
-    }
-
-    /* Основний контент */
     main {
       background-color: white;
       margin: 20px auto;
@@ -122,7 +96,7 @@ nav {
       width: 95%;
       opacity: 0;
       animation: fadeIn 2s forwards;
-      animation-delay: 2.8s;
+      animation-delay: 3.2s;
     }
 
     main h2 {
@@ -140,7 +114,6 @@ nav {
       margin-bottom: 15px;
     }
 
-    /* Секція основних функцій */
     section ul {
       font-size: 1.05em;
       list-style: none;
@@ -164,23 +137,11 @@ nav {
       top: -3px;
     }
 
-    section ul li:nth-child(1) {
-      animation-delay: 3s;
-    }
+    section ul li:nth-child(1) { animation-delay: 3.4s; }
+    section ul li:nth-child(2) { animation-delay: 3.6s; }
+    section ul li:nth-child(3) { animation-delay: 3.8s; }
+    section ul li:nth-child(4) { animation-delay: 4s; }
 
-    section ul li:nth-child(2) {
-      animation-delay: 3.2s;
-    }
-
-    section ul li:nth-child(3) {
-      animation-delay: 3.4s;
-    }
-
-    section ul li:nth-child(4) {
-      animation-delay: 3.6s;
-    }
-
-    /* Блок рекрутингу */
     .recruitment {
       background-color: #004080;
       color: white;
@@ -193,7 +154,7 @@ nav {
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       opacity: 0;
       animation: fadeIn 2s forwards;
-      animation-delay: 3.8s;
+      animation-delay: 4.2s;
     }
 
     .recruitment h2 {
@@ -231,7 +192,6 @@ nav {
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
     }
 
-    /* Футер */
     footer {
       background-color: #002f6c;
       color: white;
@@ -242,41 +202,32 @@ nav {
       margin-top: auto;
     }
 
-    /* Анімації */
     @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
     @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* Мобільна версія */
     @media (max-width: 768px) {
       header h1 {
         font-size: 1.8em;
       }
 
       nav {
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
       }
 
       nav a {
         font-size: 0.9em;
         padding: 8px 12px;
         margin: 3px;
+        width: 90%;
+        text-align: center;
       }
 
       main, .recruitment {
@@ -291,12 +242,10 @@ nav {
 </head>
 <body>
 
-  <!-- Шапка -->
   <header>
     <h1>СБУ — UKRAINE GTA | СХІДНА УКРАЇНА</h1>
   </header>
 
-  <!-- Навігація -->
   <nav>
     <a href="nakazy.html">Накази</a>
     <a href="struktura.html">Структура</a>
@@ -304,10 +253,8 @@ nav {
     <a href="istorya.html">Історія СБУ</a>
     <a href="kerivnytstvo.html">Керівництво</a>
     <a href="about.html">Про нас</a>
-istorya.html
   </nav>
 
-  <!-- Основний контент -->
   <main>
     <section>
       <h2>Ласкаво просимо до СБУ!</h2>
@@ -326,17 +273,16 @@ istorya.html
     </section>
   </main>
 
-  <!-- Блок рекрутингу -->
   <div class="recruitment">
     <h2>ДОЛУЧАЙСЯ ДО СБУ</h2>
     <p>Приєднуйся до одного з кращих спецпідрозділів! Ми розширюємося та оголошуємо набір за різними спеціалізаціями.</p>
-    <a href="https://docs.google.com/forms/d/1gT_vP0gil252kp_ZQtqmm_QagHAFmLQves_TVFq1-pk/edit" class="recruitment-btn">ПОДАТИ ЗАЯВКУ</a>
+    <a href="https://docs.google.com/forms/d/1gT_vP0gil252kp_ZQtqmm_QagHAFmLQves_TVFq1-pk/edit" class="recruitment-btn" target="_blank" rel="noopener noreferrer">ПОДАТИ ЗАЯВКУ</a>
   </div>
 
-  <!-- Футер -->
   <footer>
     &copy; 2025 СБУ — UKRAINE GTA. Всі права захищені.
   </footer>
 
 </body>
 </html>
+

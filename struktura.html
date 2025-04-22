@@ -8,11 +8,26 @@
     header { background: #002f6c; color: white; padding: 20px; text-align: center; }
     nav { background: #004080; padding: 10px; text-align: center; }
     nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
-    main { padding: 20px; }
+    main {
+      padding: 20px;
+      animation: fadeIn 1s ease-out;
+    }
     footer { background: #002f6c; color: white; text-align: center; padding: 10px; position: fixed; bottom: 0; width: 100%; }
     table { width: 100%; border-collapse: collapse; margin-top: 20px; }
     th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
     th { background: #004080; color: white; }
+
+    /* Анімація */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 <body>
@@ -43,15 +58,18 @@
         <td>Вакантно</td>
         <td></td>
       </tr>
-      <td>Державне Бюро Розслідувань</td>
+      <tr>
+        <td>Державне Бюро Розслідувань</td>
         <td>Александрє Грозний</td>
         <td>@xarbor_xx</td>
       </tr>
-        <td>Депаратмент Контррозвідки</td>
+      <tr>
+        <td>Департамент Контррозвідки</td>
         <td>Владіслав Грозний</td>
         <td>@Beshket5</td>
       </tr>
-      <td>Управління СБУ в м. Дніпро</td>
+      <tr>
+        <td>Управління СБУ в м. Дніпро</td>
         <td>Вакантно</td>
         <td></td>
       </tr>

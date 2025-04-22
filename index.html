@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>СБУ — uKRAINE GTA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Загальний стиль */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Шапка */
+    header {
+      background-color: #002f6c;
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      font-family: 'Georgia', serif;
+      margin-top: 10px;
+    }
+
+    /* Навігація */
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #004080;
+      padding: 12px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+      color: white;
+      font-weight: bold;
+      font-size: 1em;
+      padding: 8px 16px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #ffcc00;
+      color: #002f6c;
+    }
+
+    /* Основний контент */
+    main {
+      background-color: white;
+      margin: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      flex: 1;
+    }
+
+    main h2 {
+      font-size: 2em;
+      color: #002f6c;
+      font-family: 'Georgia', serif;
+      margin-bottom: 15px;
+    }
+
+    main p {
+      font-size: 1em;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Секція основних функцій */
+    section ul {
+      font-size: 1em;
+      list-style: none;
+      padding-left: 20px;
+    }
+
+    section ul li {
+      margin-bottom: 8px;
+    }
+
+    section ul li::before {
+      content: '\2022';
+      color: #004080;
+      font-size: 1.2em;
+      margin-right: 10px;
+    }
+
+    /* Блок рекрутингу */
+    .recruitment {
+      background-color: #004080;
+      color: white;
+      padding: 30px;
+      margin: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .recruitment h2 {
+      color: #ffcc00;
+      margin-bottom: 15px;
+    }
+
+    .recruitment p {
+      margin-bottom: 20px;
+      font-size: 1.1em;
+    }
+
+    .recruitment-btn {
+      display: inline-block;
+      background-color: #ffcc00;
+      color: #002f6c;
+      padding: 10px 25px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .recruitment-btn:hover {
+      background-color: #e6b800;
+      transform: translateY(-3px);
+    }
+
+    /* Анімація для заголовка */
+    h2 {
+      animation: slideIn 1s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    /* Футер */
+    footer {
+      background-color: #002f6c;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 1em;
+      width: 100%;
+    }
+
+    /* Мобільна версія */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav a {
+        font-size: 0.9em;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      main h2 {
+        font-size: 1.8em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Шапка -->
+  <header>
+    <h1>СБУ — UKRAINE GTA | СХІДНА УКРАЇНА</h1>
+  </header>
+
+  <!-- Навігація -->
+  <nav>
+    <a href="nakazy.html">Накази</a>
+    <a href="struktura.html">Структура</a>
+    <a href="kontakt.html">Контакти</a>
+    <a href="about.html">Про нас</a>
+  </nav>
+
+  <!-- Основний контент -->
+  <main>
+    <section>
+      <h2>Ласкаво просимо до СБУ!</h2>
+      <p>Служба Безпеки України займається забезпеченням безпеки, правопорядку та боротьбою з криміналом.</p>
+      <p>На цьому сайті ви знайдете актуальну інформацію про діяльність нашої організації в межах гри, а також накази, структуру та багато іншого.</p>
+    </section>
+
+    <section>
+      <h2>Основні функції СБУ:</h2>
+      <ul>
+        <li>Забезпечення безпеки гравців і мирних жителів в грі;</li>
+        <li>Пошук та нейтралізація терористичних і злочинних угруповань;</li>
+        <li>Підтримка порядку на вулицях і в громадських місцях;</li>
+        <li>Розслідування випадків шахрайства і корупції серед гравців.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Блок рекрутингу -->
+  <div class="recruitment">
+    <h2>ДОЛУЧАЙСЯ ДО ЦСО "А"</h2>
+    <p>Приєднуйся до одного з кращих спецпідрозділів! Ми розширюємося та оголошуємо набір за різними спеціалізаціями.</p>
+    <p>Навіть якщо ти цивільний без військового досвіду, наші досвідчені командири забезпечать якісну підготовку та найкраще застосування твоїх навичок для захисту країни.</p>
+    <a href="#" class="recruitment-btn">ПОДАТИ ЗАЯВКУ</a>
+  </div>
+
+  <!-- Футер -->
+  <footer>
+    &copy; 2025 СБУ — uKRAINE GTA. Всі права захищені.
+  </footer>
+
+</body>
+</html>

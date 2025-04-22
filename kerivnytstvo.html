@@ -1,179 +1,356 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Керівництво СБУ — uKRAINE GTA</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Структура СБУ — UKRAINE GTA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f4f6fa;
-      color: #333;
+    :root {
+      --main-blue: #002f6c;
+      --accent-blue: #004080;
+      --gold: #ffcc00;
+      --dark-blue: #001a3a;
+    }
+    
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
-
-    header, footer {
-      background-color: #002f6c;
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f0f2f5 0%, #dfe6ed 100%);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Шапка */
+    header {
+      background: linear-gradient(to right, var(--dark-blue), var(--main-blue));
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gold);
+    }
+    
+    .logo-container {
+      margin-bottom: 10px;
+    }
+    
+    .sbu-logo {
+      height: 80px;
+      animation: pulse 3s infinite;
+      filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.4));
+    }
+    
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Навігація */
+    nav {
+      background: var(--accent-blue);
+      padding: 12px 0;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 600;
+      padding: 8px 15px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    nav a.active {
+      background: var(--gold);
+      color: var(--dark-blue);
+    }
+    
+    /* Основний контент */
+    main {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+      animation: fadeIn 1s ease-out;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      color: var(--dark-blue);
+      margin-bottom: 30px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--gold);
+    }
+    
+    /* Картки підрозділів */
+    .departments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .department-card {
+      background: white;
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+      border-top: 4px solid var(--gold);
+    }
+    
+    .department-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .department-icon {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
+    
+    .department-title {
+      font-size: 1.5rem;
+      color: var(--dark-blue);
+      margin-bottom: 15px;
+    }
+    
+    .department-head {
+      font-weight: 600;
+      margin: 15px 0 5px;
+      color: var(--accent-blue);
+    }
+    
+    .department-contact {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+      color: var(--main-blue);
+    }
+    
+    .department-contact i {
+      margin-right: 10px;
+      color: var(--gold);
+    }
+    
+    /* Керівництво */
+    .leadership {
+      background: white;
+      border-radius: 8px;
+      padding: 30px;
+      margin-top: 40px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+    
+    .leader {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .leader-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 20px;
+      border: 3px solid var(--gold);
+    }
+    
+    .leader-info h3 {
+      color: var(--dark-blue);
+      margin-bottom: 5px;
+    }
+    
+    .leader-position {
+      color: var(--accent-blue);
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    /* Футер */
+    footer {
+      background: var(--dark-blue);
       color: white;
       text-align: center;
       padding: 20px;
+      margin-top: 50px;
     }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      background-color: #004080;
-      padding: 12px;
-    }
-
-    nav a {
-      color: white;
-      font-weight: bold;
-      padding: 10px 20px;
-      margin: 0 5px;
-      text-decoration: none;
-      border-radius: 5px;
-      opacity: 0;
-      transform: translateY(-10px);
-      animation: fadeIn 0.5s forwards;
-    }
-
-    nav a:nth-child(1) { animation-delay: 0.2s; }
-    nav a:nth-child(2) { animation-delay: 0.4s; }
-    nav a:nth-child(3) { animation-delay: 0.6s; }
-    nav a:nth-child(4) { animation-delay: 0.8s; }
-    nav a:nth-child(5) { animation-delay: 1s; }
-    nav a:nth-child(6) { animation-delay: 1.2s; }
-
-    nav a:hover {
-      background-color: #ffcc00;
-      color: #002f6c;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 30px;
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      text-align: center;
-      color: #002f6c;
-      margin-bottom: 30px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-
-    th, td {
-      padding: 15px;
-      border: 1px solid #ccc;
-      text-align: left;
-      font-size: 1.05em;
-    }
-
-    th {
-      background-color: #004080;
-      color: white;
-    }
-
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-
+    
+    /* Анімації */
     @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
-
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    /* Адаптивність */
     @media (max-width: 768px) {
-      nav {
-        flex-wrap: wrap;
+      header h1 {
+        font-size: 1.8rem;
       }
-
+      
       nav a {
-        margin: 4px;
-        font-size: 0.95em;
+        margin: 0 10px;
+        padding: 6px 12px;
+        font-size: 0.9rem;
       }
-
-      main {
-        padding: 20px;
+      
+      .section-title {
+        font-size: 1.8rem;
       }
-
-      table, th, td {
-        font-size: 0.95em;
+      
+      .leader {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .leader-photo {
+        margin-right: 0;
+        margin-bottom: 15px;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- Шапка -->
   <header>
-    <h1>СБУ — uKRAINE GTA</h1>
+    <div class="logo-container">
+      <img src="1745342792997.png" alt="Герб СБУ" class="sbu-logo">
+    </div>
+    <h1>СТРУКТУРА СЛУЖБИ БЕЗПЕКИ УКРАЇНИ</h1>
   </header>
 
+  <!-- Навігація -->
   <nav>
-    <a href="nakazy.html">Накази</a>
-    <a href="struktura.html">Структура</a>
-    <a href="kontakt.html">Контакти</a>
-    <a href="about.html">Про нас</a>
-    <a href="istorya.html">Історія СБУ</a>
-    <a href="operatives.html">Галереія оперативників</a>
-    <a href="kerivnytstvo.html">Керівництво</a>
+    <a href="index.html"><i class="fas fa-home"></i> Головна</a>
+    <a href="nakazy.html"><i class="fas fa-file-alt"></i> Накази</a>
+    <a href="struktura.html" class="active"><i class="fas fa-sitemap"></i> Структура</a>
+    <a href="kontakt.html"><i class="fas fa-phone-alt"></i> Контакти</a>
   </nav>
 
+  <!-- Основний контент -->
   <main>
-    <h1>Керівництво Служби безпеки України</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Посада</th>
-          <th>Ім’я</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Голова СБ України</td>
-          <td>Кирило Громов</td>
-        </tr>
-        <tr>
-          <td>Перший заступник Голови СБ України</td>
-          <td>Владіслав Грозний</td>
-        </tr>
-        <tr>
-          <td>Заступник Голови СБ України</td>
-          <td>Олексій Рейнхард</td>
-        </tr>
-        <tr>
-          <td>Заступник Голови СБ України</td>
-          <td>Александрє Грозний</td>
-        </tr>
-        <tr>
-          <td>Заступник Голови СБ України</td>
-          <td><em>Вакантно</em></td>
-        </tr>
-        <tr>
-          <td>Заступник Голови СБ України</td>
-          <td><em>Вакантно</em></td>
-        </tr>
-        <tr>
-          <td>Заступник Голови СБ України</td>
-          <td><em>Вакантно</em></td>
-        </tr>
-      </tbody>
-    </table>
+    <h2 class="section-title">Підрозділи СБУ</h2>
+    
+    <div class="departments-grid">
+      <div class="department-card">
+        <div class="department-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3 class="department-title">Департамент контррозвідки</h3>
+        <p>Основні напрямки діяльності: виявлення та протидія шпигунській діяльності, спецоперації.</p>
+        <div class="department-head">Начальник: Владіслав Грозний</div>
+        <div class="department-contact">
+          <i class="fab fa-telegram"></i>
+          <span>@Beshket5</span>
+        </div>
+      </div>
+      
+      
+      <div class="department-card">
+        <div class="department-icon">
+          <i class="fas fa-bullseye"></i>
+        </div>
+        <h3 class="department-title">ЦСО "А"</h3>
+        <p>Проведення антитерористичних операцій, спеціальні операції високого ризику.</p>
+        <div class="department-head">Командир: Вакантно</div>
+        <div class="department-contact">
+          <i class="fab fa-telegram"></i>
+          <span></span>
+        </div>
+      </div>
+      
+      <div class="department-card">
+        <div class="department-icon">
+          <i class="fas fa-gavel"></i>
+        </div>
+        <h3 class="department-title">Державне бюро розслідувань</h3>
+        <p>Розслідування особливо тяжких злочинів, корупційних схем, і інших порушень від високопосадовців.</p>
+        <div class="department-head">Директор: Александрє Грозний</div>
+        <div class="department-contact">
+          <i class="fab fa-telegram"></i>
+          <span>@xarbor_xx</span>
+        </div>
+      </div>
+      
+      <div class="department-card">
+        <div class="department-icon">
+          <i class="fas fa-border-none"></i>
+        </div>
+        <h3 class="department-title">Академія СБ України</h3>
+        <p>Академія СБУ забезпечує професійну підготовку співробітників української спецслужби.</p>
+        <div class="department-head">Начальник: Олексій Рейнхард</div>
+        <div class="department-contact">
+          <i class="fab fa-telegram"></i>
+          <span>@alexx1_s</span>
+        </div>
+      </div>
+      
+    
+    <div class="leadership">
+      <h3 class="section-title">Керівництво СБУ</h3>
+      
+      <div class="leader">
+        <img src="https://via.placeholder.com/80" alt="Василь Малюк" class="leader-photo">
+        <div class="leader-info">
+          <h3>Василь Малюк</h3>
+          <div class="leader-position">Голова Служби безпеки України</div>
+          <p>Керує діяльністю СБУ 7 березня 2025 року. Під його керівництвом СБУ значно посилила боротьбу з диверсійно-розвідувальною діяльністю РФ.</p>
+        </div>
+      </div>
+      
+      <div class="leader">
+        <img src="https://via.placeholder.com/80" alt="Олена Щербак" class="leader-photo">
+        <div class="leader-info">
+          <h3>Олена Щербак</h3>
+          <div class="leader-position">Перший заступник Голови СБУ</div>
+          <p>Курує питаннями контррозвідки та захисту національної безпеки. Досвід роботи в спецслужбах понад 15 років.</p>
+
+        </div>
+      </div>
+    </div>
   </main>
 
+  <!-- Футер -->
   <footer>
-    &copy; 2025 СБУ — uKRAINE GTA. Всі права захищені.
+    <p>&copy; 2023 СБУ UKRAINE GTA. Всі права захищені.</p>
   </footer>
+
 </body>
 </html>

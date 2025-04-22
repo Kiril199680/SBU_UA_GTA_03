@@ -2,91 +2,338 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Контакти</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакти СБУ — UKRAINE GTA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      font-family: Arial;
+    :root {
+      --main-blue: #002f6c;
+      --accent-blue: #004080;
+      --gold: #ffcc00;
+      --dark-blue: #001a3a;
+    }
+    
+    * {
       margin: 0;
-      background: #f4f4f4;
+      padding: 0;
+      box-sizing: border-box;
     }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f0f2f5 0%, #dfe6ed 100%);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Шапка */
     header {
-      background: #002f6c;
+      background: linear-gradient(to right, var(--dark-blue), var(--main-blue));
       color: white;
-      padding: 20px;
+      padding: 20px 0;
       text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
     }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gold);
+    }
+    
+    .logo-container {
+      margin-bottom: 10px;
+    }
+    
+    .sbu-logo {
+      height: 80px;
+      animation: pulse 3s infinite;
+      filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.4));
+    }
+    
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Навігація */
     nav {
-      background: #004080;
-      padding: 10px;
+      background: var(--accent-blue);
+      padding: 12px 0;
       text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
+    
     nav a {
       color: white;
       text-decoration: none;
       margin: 0 15px;
-      font-weight: bold;
+      font-weight: 600;
+      padding: 8px 15px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
     }
+    
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    nav a.active {
+      background: var(--gold);
+      color: var(--dark-blue);
+    }
+    
+    /* Основний контент */
     main {
-      padding: 20px;
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
       animation: fadeIn 1s ease-out;
     }
+    
+    .contacts-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .contact-card {
+      background: white;
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+      border-top: 4px solid var(--gold);
+    }
+    
+    .contact-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .contact-icon {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
+    
+    .contact-title {
+      font-size: 1.5rem;
+      color: var(--dark-blue);
+      margin-bottom: 15px;
+    }
+    
+    .contact-info {
+      margin-bottom: 10px;
+    }
+    
+    .contact-link {
+      color: var(--accent-blue);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .contact-link:hover {
+      color: var(--dark-blue);
+      text-decoration: underline;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      color: var(--dark-blue);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--gold);
+    }
+    
+    /* Форма зворотного зв'язку */
+    .contact-form {
+      background: white;
+      border-radius: 8px;
+      padding: 30px;
+      margin-top: 40px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .submit-btn {
+      background: var(--gold);
+      color: var(--dark-blue);
+      border: none;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .submit-btn:hover {
+      background: #e6b800;
+      transform: translateY(-2px);
+    }
+    
+    /* Футер */
     footer {
-      background: #002f6c;
+      background: var(--dark-blue);
       color: white;
       text-align: center;
-      padding: 10px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
+      padding: 20px;
+      margin-top: 50px;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
-    }
-    th {
-      background: #004080;
-      color: white;
-    }
-
-    /* Анімація появи контенту */
+    
+    /* Анімації */
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    /* Адаптивність */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+      
+      nav a {
+        margin: 0 10px;
+        padding: 6px 12px;
+        font-size: 0.9rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- Шапка -->
   <header>
-    <h1>Контакти</h1>
+    <div class="logo-container">
+      <img src="1745342792997.png" alt="Герб СБУ" class="sbu-logo">
+    </div>
+    <h1>КОНТАКТИ СБУ</h1>
   </header>
+
+  <!-- Навігація -->
   <nav>
-    <a href="index.html">Головна</a>
-    <a href="struktura.html">Структура</a>
-    <a href="nakazy.html">Накази</a>
-    <a href="about.html">Про нас</a>
-    <a href="operatives.html">Галереія оперативників</a>
-    <a href="kerivnytstvo.html">Керівництво</a>
+    <a href="index.html"><i class="fas fa-home"></i> Головна</a>
+    <a href="nakazy.html"><i class="fas fa-file-alt"></i> Накази</a>
+    <a href="struktura.html"><i class="fas fa-sitemap"></i> Структура</a>
+    <a href="kontakt.html" class="active"><i class="fas fa-phone-alt"></i> Контакти</a>
   </nav>
+
+  <!-- Основний контент -->
   <main>
-    <section>
-      <h2>Як зв'язатися:</h2>
-      <p>Telegram: <a href="https://t.me/menegerSBU_UA_GTA_03" target="_blank">https://t.me/menegerSBU_UA_GTA_03</a></p>
-    </section>
+    <h2 class="section-title">Зв'яжіться з нами</h2>
+    
+    <div class="contacts-container">
+      <div class="contact-card">
+        <div class="contact-icon">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <h3 class="contact-title">Штаб-квартира</h3>
+        <div class="contact-info">
+          <p>м. Київ, вул. Володимирська, 15</p>
+        </div>
+      </div>
+      
+      <div class="contact-card">
+        <div class="contact-icon">
+          <i class="fas fa-phone-alt"></i>
+        </div>
+        <h3 class="contact-title">Телефони</h3>
+        <div class="contact-info">
+          <p>Гаряча лінія: <a href="tel:+380442556565" class="contact-link">044-255-65-65</a></p>
+          <p>Довідкова: <a href="tel:+380442556666" class="contact-link">044-255-66-66</a></p>
+        </div>
+      </div>
+      
+      <div class="contact-card">
+        <div class="contact-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <h3 class="contact-title">Електронна пошта</h3>
+        <div class="contact-info">
+          <p>Загальні питання: <a href="mailto:info@sbu-gta.ua" class="contact-link">info@sbu-gta.ua</a></p>
+          <p>Співпраця: <a href="mailto:coop@sbu-gta.ua" class="contact-link">coop@sbu-gta.ua</a></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="contact-form">
+      <h3 class="section-title">Форма зворотного зв'язку</h3>
+      <form>
+        <div class="form-group">
+          <label for="name">Ваше ім'я</label>
+          <input type="text" id="name" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Електронна пошта</label>
+          <input type="email" id="email" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="subject">Тема</label>
+          <input type="text" id="subject" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Повідомлення</label>
+          <textarea id="message" class="form-control" required></textarea>
+        </div>
+        
+        <button type="submit" class="submit-btn">Надіслати</button>
+      </form>
+    </div>
   </main>
+
+  <!-- Футер -->
   <footer>
-    &copy; 2025 СБУ — UKRAINE GTA. Всі права захищені.
+    <p>&copy; 2025 СБУ UKRAINE GTA. Всі права захищені.</p>
   </footer>
+
 </body>
 </html>

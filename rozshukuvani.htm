@@ -6,8 +6,276 @@
   <title>Розшукувані | СБУ — UKRAINE GTA</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Додайте стилі з головної сторінки або використовуйте окремий CSS файл */
-    /* Тут повинні бути всі стилі з головної сторінки */
+    :root {
+      --main-blue: #002f6c;
+      --accent-blue: #004080;
+      --gold: #ffcc00;
+      --dark-blue: #001a3a;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+    
+    body {
+      background-color: #f0f2f5;
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    header {
+      background: linear-gradient(90deg, var(--dark-blue) 0%, var(--main-blue) 100%);
+      color: white;
+      padding: 25px 0;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo-container {
+      margin-bottom: 15px;
+    }
+    
+    .sbu-logo {
+      height: 80px;
+      width: auto;
+    }
+    
+    header h1 {
+      font-size: 2.2em;
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    header p {
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: var(--accent-blue);
+      padding: 12px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1em;
+      padding: 8px 16px;
+      margin: 0 5px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    
+    nav a:hover {
+      background-color: var(--gold);
+      color: var(--dark-blue);
+    }
+    
+    nav a.active {
+      background-color: var(--gold);
+      color: var(--dark-blue);
+    }
+    
+    main {
+      flex: 1;
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+      color: var(--dark-blue);
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+    }
+    
+    .wanted-grid, .arrested-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .wanted-card, .arrested-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .wanted-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .wanted-img-container {
+      position: relative;
+    }
+    
+    .wanted-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+    
+    .wanted-status {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--gold);
+      color: var(--dark-blue);
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    
+    .arrested-status {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #28a745;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    
+    .wanted-content, .arrested-content {
+      padding: 20px;
+    }
+    
+    .wanted-name {
+      color: var(--dark-blue);
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+    
+    .wanted-details p, .arrested-details p {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    
+    .wanted-reward {
+      background: #f8f9fa;
+      padding: 10px;
+      border-radius: 4px;
+      margin: 15px 0;
+    }
+    
+    .report-btn {
+      background: var(--gold);
+      color: var(--dark-blue);
+      border: none;
+      padding: 12px 20px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .report-btn:hover {
+      background: #e6b800;
+    }
+    
+    footer {
+      background: var(--dark-blue);
+      color: white;
+      text-align: center;
+      padding: 25px 0;
+      margin-top: 60px;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 0 20px;
+    }
+    
+    .footer-logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--gold);
+    }
+    
+    .footer-links a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 1.2rem;
+    }
+    
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+    
+    .copyright {
+      width: 100%;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    @media (max-width: 768px) {
+      nav {
+        flex-wrap: wrap;
+      }
+      
+      nav a {
+        margin: 5px;
+        font-size: 0.9rem;
+        padding: 6px 12px;
+      }
+      
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+      }
+      
+      .wanted-grid, .arrested-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -38,65 +306,71 @@
     <section>
       <h2 class="section-title">Розшукувані особи</h2>
       
-      <div class="wanted-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 30px;">
+      <div class="wanted-grid">
         <!-- Картка розшукуваного 1 -->
-        <div class="wanted-card" style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s;">
-          <div style="position: relative;">
-            <img src="https://via.placeholder.com/400x300" alt="Розшукуваний" style="width: 100%; height: auto; display: block;">
-            <div style="position: absolute; top: 10px; right: 10px; background: var(--gold); color: var(--dark-blue); padding: 5px 10px; border-radius: 4px; font-weight: bold; font-size: 0.9rem;">В РОЗШУКУ</div>
+        <div class="wanted-card">
+          <div class="wanted-img-container">
+            <img src="https://via.placeholder.com/400x300" alt="Розшукуваний" class="wanted-img">
+            <div class="wanted-status">В РОЗШУКУ</div>
           </div>
-          <div style="padding: 20px;">
-            <h3 style="color: var(--dark-blue); margin-bottom: 10px; font-size: 1.3rem;">Іваненко Петро Олексійович</h3>
-            <p style="margin-bottom: 5px;"><strong>Статус:</strong> Особливо небезпечний</p>
-            <p style="margin-bottom: 5px;"><strong>Злочини:</strong> Вбивство, розбій, викрадення</p>
-            <p style="margin-bottom: 15px;"><strong>Виглядати:</strong> 180 см, середньої статури, татуювання "88" на шиї</p>
-            <div style="background: #f8f9fa; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
-              <p style="font-size: 0.9rem; margin-bottom: 5px;"><strong>Виношува:</strong> $50,000</p>
-              <p style="font-size: 0.9rem;"><strong>Інформація:</strong> Останній раз бачений у районі залізничного вокзалу</p>
+          <div class="wanted-content">
+            <h3 class="wanted-name">Іваненко Петро Олексійович</h3>
+            <div class="wanted-details">
+              <p><strong>Статус:</strong> Особливо небезпечний</p>
+              <p><strong>Злочини:</strong> Вбивство, розбій, викрадення</p>
+              <p><strong>Виглядати:</strong> 180 см, середньої статури, татуювання "88" на шиї</p>
             </div>
-            <button style="background: var(--gold); color: var(--dark-blue); border: none; padding: 10px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; width: 100%; transition: background 0.3s;" onmouseover="this.style.background='#e6b800'" onmouseout="this.style.background='var(--gold)'">
+            <div class="wanted-reward">
+              <p><strong>Виношува:</strong> $50,000</p>
+              <p><strong>Інформація:</strong> Останній раз бачений у районі залізничного вокзалу</p>
+            </div>
+            <button class="report-btn" onclick="window.open('https://t.me/menegerSBU_UA_GTA_03', '_blank')">
               <i class="fas fa-phone-alt"></i> ПОВІДОМИТИ ПРО МІСЦЕЗНАХОДЖЕННЯ
             </button>
           </div>
         </div>
         
         <!-- Картка розшукуваного 2 -->
-        <div class="wanted-card" style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s;">
-          <div style="position: relative;">
-            <img src="https://via.placeholder.com/400x300" alt="Розшукуваний" style="width: 100%; height: auto; display: block;">
-            <div style="position: absolute; top: 10px; right: 10px; background: var(--gold); color: var(--dark-blue); padding: 5px 10px; border-radius: 4px; font-weight: bold; font-size: 0.9rem;">В РОЗШУКУ</div>
+        <div class="wanted-card">
+          <div class="wanted-img-container">
+            <img src="https://via.placeholder.com/400x300" alt="Розшукуваний" class="wanted-img">
+            <div class="wanted-status">В РОЗШУКУ</div>
           </div>
-          <div style="padding: 20px;">
-            <h3 style="color: var(--dark-blue); margin-bottom: 10px; font-size: 1.3rem;">Сидоренко Олег Вікторович</h3>
-            <p style="margin-bottom: 5px;"><strong>Статус:</strong> Небезпечний</p>
-            <p style="margin-bottom: 5px;"><strong>Злочини:</strong> Контрабанда, торгівля зброєю</p>
-            <p style="margin-bottom: 15px;"><strong>Виглядати:</strong> 175 см, худий, носить окуляри</p>
-            <div style="background: #f8f9fa; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
-              <p style="font-size: 0.9rem; margin-bottom: 5px;"><strong>Виношува:</strong> $25,000</p>
-              <p style="font-size: 0.9rem;"><strong>Інформація:</strong> Може переховуватися у підпільних казино</p>
+          <div class="wanted-content">
+            <h3 class="wanted-name">Сидоренко Олег Вікторович</h3>
+            <div class="wanted-details">
+              <p><strong>Статус:</strong> Небезпечний</p>
+              <p><strong>Злочини:</strong> Контрабанда, торгівля зброєю</p>
+              <p><strong>Виглядати:</strong> 175 см, худий, носить окуляри</p>
             </div>
-            <button style="background: var(--gold); color: var(--dark-blue); border: none; padding: 10px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; width: 100%; transition: background 0.3s;" onmouseover="this.style.background='#e6b800'" onmouseout="this.style.background='var(--gold)'">
+            <div class="wanted-reward">
+              <p><strong>Виношува:</strong> $25,000</p>
+              <p><strong>Інформація:</strong> Може переховуватися у підпільних казино</p>
+            </div>
+            <button class="report-btn" onclick="window.open('https://t.me/menegerSBU_UA_GTA_03', '_blank')">
               <i class="fas fa-phone-alt"></i> ПОВІДОМИТИ ПРО МІСЦЕЗНАХОДЖЕННЯ
             </button>
           </div>
         </div>
         
         <!-- Картка розшукуваного 3 -->
-        <div class="wanted-card" style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s;">
-          <div style="position: relative;">
-            <img src="https://via.placeholder.com/400x300" alt="Розшукуваний" style="width: 100%; height: auto; display: block;">
-            <div style="position: absolute; top: 10px; right: 10px; background: var(--gold); color: var(--dark-blue); padding: 5px 10px; border-radius: 4px; font-weight: bold; font-size: 0.9rem;">В РОЗШУКУ</div>
+        <div class="wanted-card">
+          <div class="wanted-img-container">
+            <img src="https://via.placeholder.com/400x300" alt="Розшукуваний" class="wanted-img">
+            <div class="wanted-status">В РОЗШУКУ</div>
           </div>
-          <div style="padding: 20px;">
-            <h3 style="color: var(--dark-blue); margin-bottom: 10px; font-size: 1.3rem;">"Шахтар" (позивний)</h3>
-            <p style="margin-bottom: 5px;"><strong>Статус:</strong> Лідер угруповання</p>
-            <p style="margin-bottom: 5px;"><strong>Злочини:</strong> Викрадення, вимагання, замах на життя</p>
-            <p style="margin-bottom: 15px;"><strong>Виглядати:</strong> 190 см, атлетичної статури, шрам на щеці</p>
-            <div style="background: #f8f9fa; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
-              <p style="font-size: 0.9rem; margin-bottom: 5px;"><strong>Виношува:</strong> $75,000</p>
-              <p style="font-size: 0.9rem;"><strong>Інформація:</strong> Керує злочинним угрупованням "Чорні копачі"</p>
+          <div class="wanted-content">
+            <h3 class="wanted-name">"Шахтар" (позивний)</h3>
+            <div class="wanted-details">
+              <p><strong>Статус:</strong> Лідер угруповання</p>
+              <p><strong>Злочини:</strong> Викрадення, вимагання, замах на життя</p>
+              <p><strong>Виглядати:</strong> 190 см, атлетичної статури, шрам на щеці</p>
             </div>
-            <button style="background: var(--gold); color: var(--dark-blue); border: none; padding: 10px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; width: 100%; transition: background 0.3s;" onmouseover="this.style.background='#e6b800'" onmouseout="this.style.background='var(--gold)'">
+            <div class="wanted-reward">
+              <p><strong>Виношува:</strong> $75,000</p>
+              <p><strong>Інформація:</strong> Керує злочинним угрупованням "Чорні копачі"</p>
+            </div>
+            <button class="report-btn" onclick="window.open('https://t.me/menegerSBU_UA_GTA_03', '_blank')">
               <i class="fas fa-phone-alt"></i> ПОВІДОМИТИ ПРО МІСЦЕЗНАХОДЖЕННЯ
             </button>
           </div>
@@ -107,35 +381,39 @@
     <section style="margin-top: 50px;">
       <h2 class="section-title">Затримані злочинці</h2>
       
-      <div class="arrested-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 30px;">
+      <div class="arrested-grid">
         <!-- Картка затриманого 1 -->
-        <div class="arrested-card" style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-          <div style="position: relative;">
-            <img src="https://via.placeholder.com/400x300" alt="Затриманий" style="width: 100%; height: auto; display: block;">
-            <div style="position: absolute; top: 10px; right: 10px; background: #28a745; color: white; padding: 5px 10px; border-radius: 4px; font-weight: bold; font-size: 0.9rem;">ЗАТРИМАНО</div>
+        <div class="arrested-card">
+          <div class="wanted-img-container">
+            <img src="https://via.placeholder.com/400x300" alt="Затриманий" class="wanted-img">
+            <div class="arrested-status">ЗАТРИМАНО</div>
           </div>
-          <div style="padding: 20px;">
-            <h3 style="color: var(--dark-blue); margin-bottom: 10px; font-size: 1.3rem;">Ковальчук Михайло Ігорович</h3>
-            <p style="margin-bottom: 5px;"><strong>Злочини:</strong> Крадіжка, пограбування</p>
-            <p style="margin-bottom: 15px;"><strong>Затримано:</strong> 15.04.2025</p>
-            <div style="background: #f8f9fa; padding: 10px; border-radius: 4px;">
-              <p style="font-size: 0.9rem;"><strong>Деталі:</strong> Затриманий під час пограбування банку, опір при затриманні</p>
+          <div class="wanted-content">
+            <h3 class="wanted-name">Ковальчук Михайло Ігорович</h3>
+            <div class="wanted-details">
+              <p><strong>Злочини:</strong> Крадіжка, пограбування</p>
+              <p><strong>Затримано:</strong> 15.04.2025</p>
+            </div>
+            <div class="wanted-reward">
+              <p><strong>Деталі:</strong> Затриманий під час пограбування банку, опір при затриманні</p>
             </div>
           </div>
         </div>
         
         <!-- Картка затриманого 2 -->
-        <div class="arrested-card" style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-          <div style="position: relative;">
-            <img src="https://via.placeholder.com/400x300" alt="Затриманий" style="width: 100%; height: auto; display: block;">
-            <div style="position: absolute; top: 10px; right: 10px; background: #28a745; color: white; padding: 5px 10px; border-radius: 4px; font-weight: bold; font-size: 0.9rem;">ЗАТРИМАНО</div>
+        <div class="arrested-card">
+          <div class="wanted-img-container">
+            <img src="https://via.placeholder.com/400x300" alt="Затриманий" class="wanted-img">
+            <div class="arrested-status">ЗАТРИМАНО</div>
           </div>
-          <div style="padding: 20px;">
-            <h3 style="color: var(--dark-blue); margin-bottom: 10px; font-size: 1.3rem;">"Лісник" (позивний)</h3>
-            <p style="margin-bottom: 5px;"><strong>Злочини:</strong> Незаконний оборот зброї</p>
-            <p style="margin-bottom: 15px;"><strong>Затримано:</strong> 10.04.2025</p>
-            <div style="background: #f8f9fa; padding: 10px; border-radius: 4px;">
-              <p style="font-size: 0.9rem;"><strong>Деталі:</strong> Затриманий під час передачі партії зброї, співпрацює зі слідством</p>
+          <div class="wanted-content">
+            <h3 class="wanted-name">"Лісник" (позивний)</h3>
+            <div class="wanted-details">
+              <p><strong>Злочини:</strong> Незаконний оборот зброї</p>
+              <p><strong>Затримано:</strong> 10.04.2025</p>
+            </div>
+            <div class="wanted-reward">
+              <p><strong>Деталі:</strong> Затриманий під час передачі партії зброї, співпрацює зі слідством</p>
             </div>
           </div>
         </div>

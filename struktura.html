@@ -17,11 +17,11 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
     }
     
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #f0f2f5 0%, #dfe6ed 100%);
+      background-color: #f0f2f5;
       color: #333;
       line-height: 1.6;
       min-height: 100vh;
@@ -31,90 +31,105 @@
     
     /* Шапка */
     header {
-      background: linear-gradient(to right, var(--dark-blue), var(--main-blue));
+      background: linear-gradient(90deg, var(--dark-blue) 0%, var(--main-blue) 100%);
       color: white;
       padding: 25px 0;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       position: relative;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
     
-    header::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--gold);
+    .logo-container {
+      margin-bottom: 15px;
+    }
+    
+    .sbu-logo {
+      height: 80px;
+      width: auto;
     }
     
     header h1 {
       font-size: 2.2em;
       font-weight: bold;
-      margin-top: 10px;
+      margin-bottom: 5px;
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    header p {
+      font-size: 1.1em;
+      opacity: 0.9;
     }
     
     /* Навігація */
     nav {
       display: flex;
       justify-content: center;
-      background-color: #002f6c;
+      background-color: var(--accent-blue);
       padding: 12px;
       box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     }
     
     nav a {
       color: white;
+      text-decoration: none;
       font-weight: bold;
       font-size: 1em;
-      padding: 10px 20px;
+      padding: 8px 16px;
       margin: 0 5px;
       border-radius: 4px;
       transition: all 0.3s ease;
     }
     
     nav a:hover {
-      background-color: #ffcc00;
-      color: #002f6c;
+      background-color: var(--gold);
+      color: var(--dark-blue);
     }
     
     nav a.active {
-      background-color: #ffcc00;
-      color: #002f6c;
+      background-color: var(--gold);
+      color: var(--dark-blue);
     }
     
     /* Основний контент */
     main {
-      background-color: white;
-      margin: 20px auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      padding: 30px;
       flex: 1;
+      padding: 30px;
       max-width: 1200px;
-      width: 95%;
+      margin: 0 auto;
+      width: 100%;
     }
     
-    main h2 {
-      font-size: 1.8em;
-      color: #004080;
+    .section-title {
+      font-size: 1.8rem;
+      color: var(--dark-blue);
       margin-bottom: 20px;
+      position: relative;
       padding-bottom: 10px;
-      border-bottom: 2px solid #ffcc00;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
     }
     
     /* Таблиця структури */
     .structure-table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-top: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
     }
     
     .structure-table th {
-      background-color: #004080;
+      background-color: var(--main-blue);
       color: white;
       padding: 15px;
       text-align: left;
@@ -124,24 +139,26 @@
     .structure-table td {
       padding: 12px 15px;
       border-bottom: 1px solid #e0e0e0;
+      transition: background 0.3s;
     }
     
     .structure-table tr:nth-child(even) {
       background-color: #f9f9f9;
     }
     
-    .structure-table tr:hover {
+    .structure-table tr:hover td {
       background-color: #f0f6ff;
     }
     
     .contact-link {
-      color: #004080;
+      color: var(--main-blue);
       text-decoration: none;
       transition: all 0.3s;
+      font-weight: 500;
     }
     
     .contact-link:hover {
-      color: #002f6c;
+      color: var(--dark-blue);
       text-decoration: underline;
     }
     
@@ -152,29 +169,68 @@
     
     /* Футер */
     footer {
-      background-color: #002f6c;
+      background: var(--dark-blue);
       color: white;
       text-align: center;
-      padding: 20px;
-      font-size: 0.95em;
+      padding: 25px 0;
+      margin-top: 60px;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 0 20px;
+    }
+    
+    .footer-logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--gold);
+    }
+    
+    .footer-links a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 1.2rem;
+    }
+    
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+    
+    .copyright {
       width: 100%;
-      margin-top: auto;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      opacity: 0.8;
     }
     
     /* Анімації */
     @keyframes fadeIn {
-      0% {
+      from {
         opacity: 0;
+        transform: translateY(20px);
       }
-      100% {
+      to {
         opacity: 1;
+        transform: translateY(0);
       }
+    }
+    
+    .structure-table {
+      animation: fadeIn 0.8s ease-out;
     }
     
     /* Мобільна версія */
     @media (max-width: 768px) {
       header h1 {
-        font-size: 1.8em;
+        font-size: 1.8rem;
       }
       
       nav {
@@ -182,17 +238,13 @@
       }
       
       nav a {
-        font-size: 0.9em;
-        padding: 8px 12px;
-        margin: 3px;
+        margin: 5px;
+        font-size: 0.9rem;
+        padding: 6px 12px;
       }
       
-      main {
-        padding: 20px;
-      }
-      
-      main h2 {
-        font-size: 1.6em;
+      .section-title {
+        font-size: 1.5rem;
       }
       
       .structure-table {
@@ -204,16 +256,20 @@
 </head>
 <body>
 
-  <!-- Шапка -->
+  <!-- Шапка з гербом -->
   <header>
-    <h1>СТРУКТУРА СБУ — UKRAINE GTA</h1>
+    <div class="logo-container">
+      <img src="1745342792997.png" alt="Герб СБУ" class="sbu-logo">
+    </div>
+    <h1>СЛУЖБА БЕЗПЕКИ УКРАЇНИ</h1>
+    <p>UKRAINE GTA | СХІДНА УКРАЇНА</p>
   </header>
 
   <!-- Навігація -->
   <nav>
     <a href="index.html"><i class="fas fa-home"></i> Головна</a>
     <a href="nakazy.html"><i class="fas fa-file-alt"></i> Накази</a>
-    <a href="struktura.html"><i class="fas fa-sitemap"></i> Структура</a>
+    <a href="struktura.html" class="active"><i class="fas fa-sitemap"></i> Структура</a>
     <a href="operatives.html"><i class="fas fa-users"></i> Оперативники</a>
     <a href="kerivnytstvo.html"><i class="fas fa-user-tie"></i> Керівництво</a>
     <a href="istorya.html"><i class="fas fa-history"></i> Історія</a>
@@ -222,7 +278,7 @@
 
   <!-- Основний контент -->
   <main>
-    <h2>Організаційна структура СБУ</h2>
+    <h2 class="section-title">Організаційна структура СБУ</h2>
     
     <table class="structure-table">
       <thead>
@@ -264,7 +320,17 @@
 
   <!-- Футер -->
   <footer>
-    &copy; 2025 СБУ — UKRAINE GTA. Всі права захищені.
+    <div class="footer-content">
+      <div class="footer-logo">СБУ UKRAINE GTA</div>
+      <div class="footer-links">
+        <a href="#"><i class="fab fa-telegram"></i></a>
+        <a href="#"><i class="fab fa-discord"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+      <div class="copyright">
+        &copy; 2025 Служба Безпеки України. Всі права захищені.
+      </div>
+    </div>
   </footer>
 
 </body>
